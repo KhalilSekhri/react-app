@@ -1,4 +1,4 @@
-const type_check_v1 = function (variable, type) {
+export function type_check_v1(variable, type) {
     const typeOfVariable = typeof variable;
 
     switch (typeOfVariable) {
@@ -18,7 +18,7 @@ const type_check_v1 = function (variable, type) {
     }
 }
 
-const type_check_v2 = function (variable, conf) {
+export function type_check_v2(variable, conf) {
     for (key in conf) {
         switch (key) {
             case 'type':
@@ -41,7 +41,7 @@ const type_check_v2 = function (variable, conf) {
     return true;
 }
 
-const type_check = function (arg, types) {
+export function type_check(arg, types) {
     let isChecked = type_check_v2(arg, types);
     if (!types.properties) return isChecked;
     for (const typeKey in types.properties) {

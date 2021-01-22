@@ -1,3 +1,5 @@
+import { type_check } from './check/type_check.js'
+
 let ReactDOM = {
     render(rElement, hElement) {
         hElement.appendChild(rElement);
