@@ -133,9 +133,3 @@ ReactDOM.render(
   //  Component.render => DomElement
   //  ReactDOM.render => rootElement.appendChild(DomElement);
   //
-  //II] Pros: Update, Cons: generation
-  //  React.createElement => Object
-  //  Component.render => Object
-  //  ReactDOM.render =>
-  //    1) Object => DomElement
-  //    2) rootElement.appendChild(DomElement);
