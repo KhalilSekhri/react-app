@@ -1,4 +1,3 @@
-import { type_check } from './check/type_check.js'
 import * as api from './api.js'
 import { Component } from './Component.js'
 import { HelloWorld } from './Hello.js'
