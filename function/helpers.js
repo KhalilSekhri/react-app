@@ -98,3 +98,10 @@ Object.prototype.prop_access = function (path) {
     }
     return targetElement;
 }
+
+String.prototype.interpolate = function (value) {
+    const regex = /.*?{{(.*?)}}.*?/gm;
+    return this.valueOf().replace(regex, (m, k) => {
+        return value.prop_access(k);
+    })
+}
