@@ -1,6 +1,7 @@
 import { type_check } from './check/type_check.js'
 import { getUserRamdom } from './api.js'
 import { Component } from './Component.js'
+import { HelloWorld } from './Hello.js'
 import { } from './function/helpers.js'
 
 //Api Fetch
@@ -97,18 +98,6 @@ class Router extends Component {
             ),
             path === "/home" && React.createElement(Home),
             path === "/about" && React.createElement(About),
-        ]);
-    }
-}
-
-class HelloWorld extends Component {
-    propTypes = {
-        name: { type: "string", enum: ["world", "you", "me"] },
-    };
-
-    render() {
-        return React.createElement("div", { toWhat: { name: this.props.name } }, [
-            "Hello {{toWhat.name}}",
         ]);
     }
 }
