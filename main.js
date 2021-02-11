@@ -1,6 +1,7 @@
 import { type_check } from './check/type_check.js'
 import { getUserRamdom } from './api.js'
 import { Component } from './Component.js'
+import { Router } from './Router.js'
 import { } from './function/helpers.js'
 
 //Api Fetch
@@ -72,31 +73,6 @@ class Counter extends Component {
                 ["Add"]
             ),
             React.createElement("span", { title: this.state.counter }, ["{{title}}"]),
-        ]);
-    }
-}
-
-class Router extends Component {
-    state = {
-        path: "/home",
-    };
-
-    propTypes = {}
-
-    render() {
-        return React.createElement("div", {}, [
-            React.createElement(
-                "button",
-                { onClick: () => this.setState({ path: "/home" }) },
-                ["Home"]
-            ),
-            React.createElement(
-                "button",
-                { onClick: () => this.setState({ path: "/about" }) },
-                ["About"]
-            ),
-            path === "/home" && React.createElement(Home),
-            path === "/about" && React.createElement(About),
         ]);
     }
 }
