@@ -1,7 +1,8 @@
+import { type_check } from './check/type_check.js'
+
 export const render = function (element, container) {
     container.appendChild(element);
 }
-
 
 export const createElement = function (tagOrComponent, props, children) {
     let element;
@@ -18,6 +19,7 @@ export const createElement = function (tagOrComponent, props, children) {
                 );
             element.appendChild(subElement);
         }
+        element.removeAttribute('prop_access');
     } else {
         if (!type_check(props, tagOrComponent.propTypes)) throw new TypeError();
         return tagOrComponent.display(props);
