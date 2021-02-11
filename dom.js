@@ -20,9 +20,11 @@ export const createElement = function (tagOrComponent, props, children) {
             element.appendChild(subElement);
         }
         element.removeAttribute('prop_access');
+        element.removeAttribute('propstype');
     } else {
         if (!type_check(props, tagOrComponent.propTypes)) throw new TypeError();
-        return tagOrComponent.display(props);
+        let Component = new tagOrComponent();
+        return Component.display(props);
     }
     return element;
 };

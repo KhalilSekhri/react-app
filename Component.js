@@ -1,8 +1,11 @@
-import { type_check_v2 } from "./check/type_check.js";
+import { type_check, type_check_v2 } from "./check/type_check.js";
 
 export class Component {
     state = {};
     prevState = {};
+
+    view = '';
+    properties = '';
 
     constructor(props) {
         this.props = props;
@@ -17,11 +20,22 @@ export class Component {
     }
 
     receiveData(data) {
-
+        this.state = data;
     }
 
     setState(state) {
+        this.state = state;
+    }
 
+    display(newProps) {
+        if (newProps) {
+            if (!type_check(newProps, this.propTypes)) {
+                throw new Error("Il y a une erreur");
+            }
+        }
+        if (this.shouldUpdate(newProps)) {
+            return this.render();
+        }
     }
 
     shouldUpdate(newProps) {
@@ -32,9 +46,8 @@ export class Component {
         return false;
     }
 
-    display(props) {
-        //...
-        return this.render();
+    render() {
+        this.view = this.view.interpolate(this.props);
     }
-    render() { }
+
 }
