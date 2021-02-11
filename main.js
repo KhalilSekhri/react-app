@@ -2,6 +2,7 @@ import { type_check } from './check/type_check.js'
 import { getUserRamdom } from './api.js'
 import { Component } from './Component.js'
 import { HelloWorld } from './Hello.js'
+import { Router } from './Router.js'
 import { } from './function/helpers.js'
 
 //Api Fetch
@@ -22,8 +23,6 @@ const getFullName = (user) => {
 //2e soluce
 getUserRamdom();
 
-
-
 let ReactDOM = {
     render(element, container) {
         container.appendChild(element);
@@ -35,6 +34,7 @@ let React = {
         let element;
         if (tagOrComponent === "div") {
             element = document.createElement(tagOrComponent);
+            console.log(props);
             for (let attribute in props) {
                 element.setAttribute(attribute, props[attribute]);
             }
@@ -77,35 +77,9 @@ class Counter extends Component {
     }
 }
 
-class Router extends Component {
-    state = {
-        path: "/home",
-    };
-
-    propTypes = {}
-
-    render() {
-        return React.createElement("div", {}, [
-            React.createElement(
-                "button",
-                { onClick: () => this.setState({ path: "/home" }) },
-                ["Home"]
-            ),
-            React.createElement(
-                "button",
-                { onClick: () => this.setState({ path: "/about" }) },
-                ["About"]
-            ),
-            path === "/home" && React.createElement(Home),
-            path === "/about" && React.createElement(About),
-        ]);
-    }
-}
-
 ReactDOM.render(
-    React.createElement("div", { toWhat: { name: "World" } }, [
-        "Hello {{toWhat.name}}",
-
+    React.createElement("div", { name: "World" }, [
+        "Hello {{name}}",
     ]),
     document.getElementById("root")
 );
