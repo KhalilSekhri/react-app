@@ -1,57 +1,24 @@
 import { type_check } from './check/type_check.js'
-import { getUserRamdom } from './api.js'
+import * as api from './api.js'
 import { Component } from './Component.js'
 import { HelloWorld } from './Hello.js'
 import { Router } from './Router.js'
-import { } from './function/helpers.js'
+import './function/helpers.js'
+import * as dom from './dom.js'
 
-//Api Fetch
-//1er soluce
-const URL = "https://randomuser.me/api/";
-const api = document.getElementById("api");
-const p = document.createElement('p');
-api.appendChild(p);
-p.append("Loading...");
-fetch(URL)
-    .then((response) => response.json())
-    .then((people) => api.innerHTML = getFullName(people.results[0].name));
+const createElement = dom.createElement;
+const render = dom.render
 
-const getFullName = (user) => {
-    return `<p>${user.title} ${user.first} ${user.last}</p>`
-};
+window.React = {
+    createElement,
+}
 
-//2e soluce
-getUserRamdom();
+window.ReactDOM = {
+    render,
+}
 
-let ReactDOM = {
-    render(element, container) {
-        container.appendChild(element);
-    }
-};
-
-let React = {
-    createElement(tagOrComponent, props, children) {
-        let element;
-        if (tagOrComponent === "div") {
-            element = document.createElement(tagOrComponent);
-            console.log(props);
-            for (let attribute in props) {
-                element.setAttribute(attribute, props[attribute]);
-            }
-            for (let subElement of children) {
-                if (typeof subElement === "string")
-                    subElement = document.createTextNode(
-                        subElement.interpolate(props)
-                    );
-                element.appendChild(subElement);
-            }
-        } else {
-            if (!type_check(props, tagOrComponent.propTypes)) throw new TypeError();
-            return tagOrComponent.display(props);
-        }
-        return element;
-    },
-};
+api.getUserRamdom();
+/* api.apiNoAsync(); */
 
 class Counter extends Component {
     constructor(props) {
