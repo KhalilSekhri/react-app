@@ -85,7 +85,7 @@ Object.prototype.prop_access = function (path) {
     //Check if path different type string
     if (typeof path !== "string") return this.valueOf();
     //Check object is different a type object or object is null
-    if (typeof this.valueOf() !== "object" || this.valueOf() === null) return `${path} not exist`;
+    if (typeof this.valueOf() !== "object" || this.valueOf() === null) throw new TypeError(`${path} not exist`);
     //Check path is empty
     if (path === "") return this.valueOf();
 
@@ -93,7 +93,7 @@ Object.prototype.prop_access = function (path) {
     let targetElement = this.valueOf();
 
     for (let prop of arrayPath) {
-        if (!targetElement.hasOwnProperty(prop)) return `${path} not exist`;
+        if (!targetElement.hasOwnProperty(prop)) throw new TypeError(`${path} not exist`);
         targetElement = targetElement[prop];
     }
     return targetElement;

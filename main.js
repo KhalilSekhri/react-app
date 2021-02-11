@@ -1,8 +1,26 @@
 import { type_check } from './check/type_check.js'
+import { getUserRamdom } from './api.js'
 
+//Api Fetch
+//1er soluce
+const URL = "https://randomuser.me/api/";
+const main = document.getElementById("root");
+const p = document.createElement('p');
+main.appendChild(p);
+p.append("Loading...");
+fetch(URL)
+    .then((response) => response.json())
+    .then((people) => main.innerHTML = getFullName(people.results[0].name));
+
+const getFullName = (user) => {
+    return `<p>${user.title} ${user.first} ${user.last}</p>`
+};
+
+//2e soluce
+getUserRamdom();
 let ReactDOM = {
-    render(rElement, hElement) {
-        hElement.appendChild(rElement);
+    render(element, container) {
+        container.appendChild(element);
     },
 };
 
@@ -70,6 +88,8 @@ class Router extends Component {
     state = {
         path: "/home",
     };
+
+    propTypes = {}
 
     render() {
         return React.createElement("div", {}, [

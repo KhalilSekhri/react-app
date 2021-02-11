@@ -43,6 +43,7 @@ export function type_check_v2(variable, conf) {
 
 export function type_check(arg, types) {
     let isChecked = type_check_v2(arg, types);
+    console.log(arg, types);
     if (!types.properties) return isChecked;
     for (const typeKey in types.properties) {
         isChecked = type_check(
