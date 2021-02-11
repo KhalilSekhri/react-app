@@ -6,8 +6,8 @@ export class HelloWorld extends Component {
     };
 
     render() {
-        return React.createElement("div", { toWhat: { name: this.props.name } }, [
-            "Hello {{toWhat.name}}",
+        return React.createElement("div", { name: this.props.name }, [
+            "Hello {{name}}",
         ]);
     }
 }

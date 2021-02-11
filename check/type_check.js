@@ -19,7 +19,7 @@ export function type_check_v1(variable, type) {
 }
 
 export function type_check_v2(variable, conf) {
-    for (key in conf) {
+    for (let key in conf) {
         switch (key) {
             case 'type':
                 if (!type_check_v1(variable, conf.type)) return false;

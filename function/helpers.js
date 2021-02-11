@@ -105,3 +105,5 @@ String.prototype.interpolate = function (value) {
         return value.prop_access(k);
     })
 }
+
+Object.prototype.propTypes = {};

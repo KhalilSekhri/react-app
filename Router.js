@@ -20,7 +20,7 @@ export class Router extends Component {
                 ["About"]
             ),
             path === "/home" && React.createElement(Home),
-            path === "/about" && React.createElement(About),
+            /* path === "/about" && React.createElement(About), */
         ]);
     }
 }
