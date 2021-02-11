@@ -1,6 +1,7 @@
 import { type_check } from './check/type_check.js'
 import { getUserRamdom } from './api.js'
 import { Component } from './Component.js'
+import { HelloWorld } from './Hello.js'
 import { Router } from './Router.js'
 import { } from './function/helpers.js'
 
@@ -72,18 +73,6 @@ class Counter extends Component {
                 ["Add"]
             ),
             React.createElement("span", { title: this.state.counter }, ["{{title}}"]),
-        ]);
-    }
-}
-
-class HelloWorld extends Component {
-    propTypes = {
-        name: { type: "string", enum: ["world", "you", "me"] },
-    };
-
-    render() {
-        return React.createElement("div", { toWhat: { name: this.props.name } }, [
-            "Hello {{toWhat.name}}",
         ]);
     }
 }
